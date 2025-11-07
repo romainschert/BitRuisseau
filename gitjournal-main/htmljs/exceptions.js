@@ -13,5 +13,14 @@ const exceptions = [
     "description": "jkasdhfsékjgfsahkjsdgfhksdgf",
     "date": "2025-05-28T08:40",
     "duration": "50"
+  },
+  {
+    "patch": true,
+    "name": "chores(BitRuisseau): faire les user story et la planification",
+    "description": "",
+    "date": "2025-11-07T09:45:00.000Z",
+    "duration": 45,
+    "status": "Done",
+    "author": "romainschert"
   }
 ]
