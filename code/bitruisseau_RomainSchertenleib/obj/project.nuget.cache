@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "XzVuv+0PpyY=",
+  "dgSpecHash": "m3Xc92O3o4A=",
   "success": true,
   "projectFilePath": "C:\\Users\\pj00ler\\Documents\\GitHub\\BitRuisseau\\code\\bitruisseau_RomainSchertenleib\\bitruisseau_RomainSchertenleib.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\pj00ler\\.nuget\\packages\\taglibsharp\\2.3.0\\taglibsharp.2.3.0.nupkg.sha512"
+  ],
   "logs": []
 }
