@@ -1,0 +1,17 @@
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\bin\Debug\net8.0-windows\bitruisseau_RomainSchertenleib.exe
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\bin\Debug\net8.0-windows\bitruisseau_RomainSchertenleib.deps.json
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\bin\Debug\net8.0-windows\bitruisseau_RomainSchertenleib.runtimeconfig.json
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\bin\Debug\net8.0-windows\bitruisseau_RomainSchertenleib.dll
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\bin\Debug\net8.0-windows\bitruisseau_RomainSchertenleib.pdb
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\obj\Debug\net8.0-windows\bitruisseau_RomainSchertenleib.Form1.resources
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\obj\Debug\net8.0-windows\bitruisseau_RomainSchertenleib.csproj.GenerateResource.cache
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\obj\Debug\net8.0-windows\bitruisseau_RomainSchertenleib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\obj\Debug\net8.0-windows\bitruisseau_RomainSchertenleib.AssemblyInfoInputs.cache
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\obj\Debug\net8.0-windows\bitruisseau_RomainSchertenleib.AssemblyInfo.cs
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\obj\Debug\net8.0-windows\bitruisseau_RomainSchertenleib.csproj.CoreCompileInputs.cache
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\obj\Debug\net8.0-windows\bitruisseau_RomainSchertenleib.sourcelink.json
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\obj\Debug\net8.0-windows\bitruisseau_RomainSchertenleib.dll
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\obj\Debug\net8.0-windows\refint\bitruisseau_RomainSchertenleib.dll
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\obj\Debug\net8.0-windows\bitruisseau_RomainSchertenleib.pdb
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\obj\Debug\net8.0-windows\bitruisseau_RomainSchertenleib.genruntimeconfig.cache
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\obj\Debug\net8.0-windows\ref\bitruisseau_RomainSchertenleib.dll
