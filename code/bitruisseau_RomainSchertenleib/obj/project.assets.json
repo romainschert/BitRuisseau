@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     "net8.0-windows7.0": {
+      "MQTTnet/5.0.1.1416": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/MQTTnet.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MQTTnet.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "TagLibSharp/2.3.0": {
         "type": "package",
         "compile": {
@@ -18,6 +31,20 @@
     }
   },
   "libraries": {
+    "MQTTnet/5.0.1.1416": {
+      "sha512": "ONYieEMaHiIei5dAtHXywnfJGhmrd5Av5sNJSQERp6AtZdPk3xxjCR6Cv0C5RUr/XbLeHO4/HQ0Rc2bQ5NF5Mw==",
+      "type": "package",
+      "path": "mqttnet/5.0.1.1416",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net8.0/MQTTnet.dll",
+        "lib/net8.0/MQTTnet.xml",
+        "mqttnet.5.0.1.1416.nupkg.sha512",
+        "mqttnet.nuspec",
+        "nuget.png"
+      ]
+    },
     "TagLibSharp/2.3.0": {
       "sha512": "Qo4z6ZjnIfbR3Us1Za5M2vQ97OWZPmODvVmepxZ8XW0UIVLGdO2T63/N3b23kCcyiwuIe0TQvMEQG8wUCCD1mA==",
       "type": "package",
@@ -38,6 +65,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
+      "MQTTnet >= 5.0.1.1416",
       "TagLibSharp >= 2.3.0"
     ]
   },
@@ -94,6 +122,10 @@
       "net8.0-windows7.0": {
         "targetAlias": "net8.0-windows",
         "dependencies": {
+          "MQTTnet": {
+            "target": "Package",
+            "version": "[5.0.1.1416, )"
+          },
           "TagLibSharp": {
             "target": "Package",
             "version": "[2.3.0, )"

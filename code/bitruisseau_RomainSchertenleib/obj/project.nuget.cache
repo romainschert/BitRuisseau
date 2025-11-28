@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "m3Xc92O3o4A=",
+  "dgSpecHash": "X5cy5/bAKBU=",
   "success": true,
   "projectFilePath": "C:\\Users\\pj00ler\\Documents\\GitHub\\BitRuisseau\\code\\bitruisseau_RomainSchertenleib\\bitruisseau_RomainSchertenleib.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\pj00ler\\.nuget\\packages\\mqttnet\\5.0.1.1416\\mqttnet.5.0.1.1416.nupkg.sha512",
     "C:\\Users\\pj00ler\\.nuget\\packages\\taglibsharp\\2.3.0\\taglibsharp.2.3.0.nupkg.sha512"
   ],
   "logs": []

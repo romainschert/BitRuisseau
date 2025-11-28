@@ -22,5 +22,23 @@ const exceptions = [
     "duration": 45,
     "status": "Done",
     "author": "romainschert"
+  },
+  {
+    "patch": true,
+    "name": "Maladie",
+    "description": "",
+    "date": "2025-11-14T10:20:00.000Z",
+    "duration": 135,
+    "status": "Done",
+    "author": "romainschert"
+  },
+  {
+    "patch": true,
+    "name": "doc(MQTT): faire des recherche sur l'implémentation du Protocol",
+    "description": "",
+    "date": "2025-11-28T09:06:00.000Z",
+    "duration": 30,
+    "status": "Done",
+    "author": "romainschert"
   }
 ]

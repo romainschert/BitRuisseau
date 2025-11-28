@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("bitruisseau_RomainSchertenleib")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06439a8198daa374cad5dd0625db416c6e8d1313")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a46cd178cb361f5d90b59d51f76c760b536897d5")]
 [assembly: System.Reflection.AssemblyProductAttribute("bitruisseau_RomainSchertenleib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("bitruisseau_RomainSchertenleib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
