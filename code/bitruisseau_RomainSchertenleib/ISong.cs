@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bitruisseau_RomainSchertenleib
+namespace BitRuisseau
 {
     public interface ISong
     {
@@ -12,7 +12,7 @@ namespace bitruisseau_RomainSchertenleib
         /// The song title
         /// </summary>
         public string Title { get; set; }
-
+        
         /// <summary>
         /// The song artist
         /// </summary>
@@ -42,5 +42,10 @@ namespace bitruisseau_RomainSchertenleib
         /// The hash of the file content
         /// </summary>
         public string Hash { get; }
+
+        /// <summary>
+        /// The file format of the song
+        /// </summary>
+        public string Extension { get; }
     }
 }
