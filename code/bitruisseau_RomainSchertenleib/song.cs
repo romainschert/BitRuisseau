@@ -17,5 +17,13 @@ namespace bitruisseau_RomainSchertenleib
         public string[] Featuring { get; set; }
         public string Hash { get; set; }
         public string Extension { get; set; }
+
+        public song(string hash, string extension)
+        {
+            Hash = hash;
+            Extension = extension;
+        }
+
+        public song() { }
     }
 }
