@@ -10,13 +10,15 @@ using ProtocolMessage = BitRuisseau.Message;
 
 public class MqttCommunicator
 {
-    private const string DefaultTopic = "powercher";
+    private const string DefaultTopic = "BitRuisseau";
     private readonly string _brokerIp;
     private IMqttClient _mqttClient;
     private readonly string _username;
     private readonly string _password;
     private readonly string _nodeId;
     private readonly string _topic;
+
+    private Protocol _protocol;
 
 
     private readonly MqttClientFactory _factory = new();
@@ -34,6 +36,7 @@ public class MqttCommunicator
         _username = username;
         _password = password;
         _mqttClient = _factory.CreateMqttClient();
+        OnMessageReceived = handelmessageRecived;
     }
 
     IPAddress GetPreferredIpAddress(string host)
@@ -43,6 +46,11 @@ public class MqttCommunicator
             .Where(/*V4*/address => address.AddressFamily == AddressFamily.InterNetwork)
             .Where(address => address.ToString().StartsWith("10"))
             .FirstOrDefault(Dns.GetHostAddresses(host)[0]);
+    }
+
+    public void SetProtocol(Protocol protocol)
+    {
+        _protocol = protocol;
     }
 
     public void Send(ProtocolMessage message, string? topic = null)
@@ -136,5 +144,19 @@ public class MqttCommunicator
     public void Stop()
     {
         _mqttClient.DisconnectAsync();
+    }
+
+    public void handelmessageRecived(ProtocolMessage message)
+    {
+        if (message == null)
+            return;
+
+        switch (message.Action)
+        {
+            case "askCatalog":
+                // Quelqu'un demande notre catalogue : on lui envoie
+                (message.Sender);
+                break;
+        }
     }
 }
