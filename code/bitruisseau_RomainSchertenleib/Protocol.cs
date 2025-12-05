@@ -104,8 +104,57 @@ namespace bitruisseau_RomainSchertenleib
         }
         private List<ISong> GetLocalCatalog()
         {
-            // TODO: Remplacer par l'accès réel à vos données de catalogue
-            return new List<ISong>(); // Retourne une liste vide pour l'exemple
+            string appDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BitRuisseau");
+            string SavefileName = "data.txt";
+            string SavefilePath = Path.Combine(appDirectory, SavefileName);
+           
+            List<ISong> catalog = new List<ISong>();
+            string folderPath = SavefilePath;
+
+            string[] files = Directory.GetFiles(folderPath, "*.mp3");
+            foreach (string file in files)
+            {
+                try
+                {
+                    var tfile = TagLib.File.Create(file);
+                    FileInfo info = new FileInfo(file);
+
+                    string title = tfile.Tag.Title ?? Path.GetFileNameWithoutExtension(file);
+                    string artist = tfile.Tag.FirstPerformer ?? "Inconnu";
+                    int year = (int)tfile.Tag.Year;
+                    TimeSpan duration = tfile.Properties.Duration;
+
+                    // Taille en bytes
+                    int sizeInBytes = (int)info.Length;
+
+                    // Featuring en tableau
+                    string[] featuring = tfile.Tag.Performers;
+
+                    // Hash du fichier (SHA256)
+                    string hash = Helper.HashFile(file);
+
+                    // Extension (toujours .mp3 ici)
+                    string extension = info.Extension;
+
+                    // Création de l'objet Song
+                    song song = new song(hash, extension)
+                    {
+                        Title = title,
+                        Artist = artist,
+                        Year = year,
+                        Duration = duration,
+                        Size = sizeInBytes,
+                        Featuring = featuring
+                    };
+
+                    catalog.Add(song);
+                }
+                catch
+                {
+                    continue;
+                }
+            }
+            return catalog; 
         }
         public void SendCatalog(string name)
         {
