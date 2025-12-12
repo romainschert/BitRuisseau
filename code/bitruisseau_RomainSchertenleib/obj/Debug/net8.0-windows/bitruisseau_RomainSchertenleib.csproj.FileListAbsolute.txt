@@ -18,3 +18,4 @@ C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenlei
 C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\bin\Debug\net8.0-windows\TagLibSharp.dll
 C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\obj\Debug\net8.0-windows\bitruisseau_RomainSchertenleib.csproj.AssemblyReference.cache
 C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\obj\Debug\net8.0-windows\bitruiss.998CD786.Up2Date
+C:\Users\pj00ler\Documents\GitHub\BitRuisseau\code\bitruisseau_RomainSchertenleib\bin\Debug\net8.0-windows\MQTTnet.dll

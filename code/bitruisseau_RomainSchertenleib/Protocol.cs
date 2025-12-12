@@ -8,7 +8,7 @@ using ProtocolMessage = BitRuisseau.Message;
 
 namespace bitruisseau_RomainSchertenleib
 {
-    internal class Protocol : IProtocol
+    public class Protocol : IProtocol
     {
         // 1. Déclaration des champs de classe (Pour _communicator et _senderHostname)
         private readonly MqttCommunicator _communicator;
@@ -109,7 +109,7 @@ namespace bitruisseau_RomainSchertenleib
             string SavefilePath = Path.Combine(appDirectory, SavefileName);
            
             List<ISong> catalog = new List<ISong>();
-            string folderPath = SavefilePath;
+            string folderPath = File.ReadAllText(SavefilePath);
 
             string[] files = Directory.GetFiles(folderPath, "*.mp3");
             foreach (string file in files)

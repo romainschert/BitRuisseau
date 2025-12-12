@@ -10,12 +10,13 @@ namespace bitruisseau_RomainSchertenleib
             if (!Directory.Exists(appDirectory))
             {
                 Directory.CreateDirectory(appDirectory);
+                
             }
 
             string SavefilePath = Path.Combine(appDirectory, SavefileName);
             txtPath.Text = File.ReadAllText(SavefilePath);
             label1.Font = new Font("Arial", 22, FontStyle.Regular);
-
+            
             LoadMp3Files(txtPath.Text);
         }
 

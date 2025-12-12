@@ -26,6 +26,7 @@ public class MqttCommunicator
     private bool _retain = false;
     private MqttQualityOfServiceLevel _qos = MqttQualityOfServiceLevel.AtLeastOnce;
 
+    private string clientname = "romain";
     public MqttCommunicator(
         string brokerHost, string nodeId, string topic = MqttCommunicator.DefaultTopic,
         string username = "ict", string password = "321")
@@ -150,13 +151,14 @@ public class MqttCommunicator
     {
         if (message == null)
             return;
-
-        switch (message.Action)
+        if (message.Recipient == "0.0.0.0" || message.Recipient == clientname)
         {
-            case "askCatalog":
-                // Quelqu'un demande notre catalogue : on lui envoie
-                (message.Sender);
-                break;
+            switch (message.Action)
+            {
+                case "askCatalog":
+                    _protocol.SendCatalog(message.Sender);
+                    break;
+            }
         }
     }
 }
