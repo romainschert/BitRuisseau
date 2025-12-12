@@ -16,7 +16,7 @@ namespace bitruisseau_RomainSchertenleib
 
         // 2. Déclaration de la constante (Pour GlobalRecipient)
         private const string GlobalRecipient = "0.0.0.0";
-
+        public event Action<List<ISong>> CatalogReceived;
         // 3. Constructeur pour initialiser les champs
         public Protocol(MqttCommunicator communicator, string senderHostname)
         {
@@ -40,7 +40,7 @@ namespace bitruisseau_RomainSchertenleib
 
             // L'implémentation complète devrait attendre la réponse 'sendCatalog' 
             // de la médiathèque 'name'.
-            throw new NotImplementedException("La gestion de la réception de la réponse 'sendCatalog' n'est pas implémentée.");
+            return new List<ISong>();
         }
 
 
@@ -197,6 +197,14 @@ namespace bitruisseau_RomainSchertenleib
                 Hash = song.Hash // Utilise le Hash de l'ISong
             };
             _communicator.Send(message);
+        }
+        public void HandleCatalogResponse(ProtocolMessage message)
+        {
+            if (message.SongList != null)
+            {
+                // Déclenche l'événement en passant le SongList reçu
+                CatalogReceived?.Invoke(message.SongList);
+            }
         }
     }
 }

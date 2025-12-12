@@ -158,6 +158,9 @@ public class MqttCommunicator
                 case "askCatalog":
                     _protocol.SendCatalog(message.Sender);
                     break;
+                case "sendCatalog": 
+                    _protocol.HandleCatalogResponse(message);
+                    break;
             }
         }
     }
