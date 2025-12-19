@@ -7,10 +7,13 @@ namespace bitruisseau_RomainSchertenleib
         private static string appDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BitRuisseau");
         private string SavefileName = "data.txt";
         private Protocol _protocol;
-        public Form1(Protocol protocol)
+        private static MqttCommunicator _mqttCommunicator;
+        public Form1(MqttCommunicator mqttCommunicator, Protocol protocol)
         {
             InitializeComponent();
             _protocol = protocol;
+            _mqttCommunicator = mqttCommunicator;
+
             if (!Directory.Exists(appDirectory))
             {
                 Directory.CreateDirectory(appDirectory);
@@ -21,6 +24,8 @@ namespace bitruisseau_RomainSchertenleib
             txtPath.Text = File.ReadAllText(SavefilePath);
             label1.Font = new Font("Arial", 22, FontStyle.Regular);
             _protocol.CatalogReceived += Protocol_CatalogReceived;
+            _mqttCommunicator.OnlineMessageresived += OnlineMessageresived;
+            _mqttCommunicator.Catalogresived += Mqtt_Catalogresived;
             LoadMp3Files(txtPath.Text);
         }
 
@@ -89,7 +94,7 @@ namespace bitruisseau_RomainSchertenleib
         {
 
         }
-        private void Protocol_CatalogReceived(List<ISong> catalog)
+        private void Protocol_CatalogReceived(List<song> catalog)
         {
             // Vérifie si l'appel vient d'un autre thread
             if (this.dataGridView2.InvokeRequired)
@@ -103,7 +108,7 @@ namespace bitruisseau_RomainSchertenleib
                 DisplayCatalog(catalog);
             }
         }
-        private void DisplayCatalog(List<ISong> catalog)
+        private void DisplayCatalog(List<song> catalog)
         {
 
             foreach (var song in catalog)
@@ -131,6 +136,75 @@ namespace bitruisseau_RomainSchertenleib
         private void button1_Click(object sender, EventArgs e)
         {
             _protocol.SayOnline();
+        }
+
+        private void OnlineMessageresived(string senders)
+        {
+            if (treeView1.InvokeRequired)
+            {
+                treeView1.Invoke(new Action(() => OnlineMessageresived(senders)));
+                return;
+            }
+
+            // Vérifier si le sender n'est pas déjà dans la liste pour éviter les doublons
+            bool existeDeja = false;
+            foreach (TreeNode node in treeView1.Nodes)
+            {
+                if (node.Text == senders)
+                {
+                    existeDeja = true;
+                    break;
+                }
+            }
+            if (senders == "romain")
+            {
+                return;
+            }
+            if (!existeDeja)
+            {
+                treeView1.Nodes.Add(new TreeNode(senders));
+            }
+        }
+        private void Mqtt_Catalogresived(string sender, List<song> songs)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() => Mqtt_Catalogresived(sender, songs)));
+                return;
+            }
+
+            // On vérifie que les données ne sont pas nulles
+            if (songs == null) return;
+
+            // Optionnel : On peut vérifier si le catalogue reçu correspond 
+            // bien à l'utilisateur actuellement sélectionné
+
+            foreach (var s in songs)
+            {
+                string titre = s.Title ?? "Inconnu";
+                string artiste = s.Artist ?? "Inconnu";
+                int annee = s.Year;
+                string duration = s.Duration.ToString(@"mm\:ss");
+                string taille = (s.Size / 1024f / 1024f).ToString("0.00") + " Mo";
+                string featuring = s.Featuring != null ? string.Join(", ", s.Featuring) : "";
+
+                dataGridView2.Rows.Add(titre, artiste, annee, duration, taille, featuring);
+            }
+        }
+
+        private void treeView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode != null)
+            {
+                // On récupère le nom du sender (le texte du nœud)
+                string selectedUser = treeView1.SelectedNode.Text;
+
+                // On vide le tableau avant la nouvelle requête
+                dataGridView2.Rows.Clear();
+
+                // On appelle la méthode du protocole pour envoyer le message "askCatalog"
+                _protocol.AskCatalog(selectedUser);
+            }
         }
     }
 }

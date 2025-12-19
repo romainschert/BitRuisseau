@@ -46,6 +46,7 @@
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             button1 = new Button();
+            treeView1 = new TreeView();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
@@ -168,11 +169,20 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // treeView1
+            // 
+            treeView1.Location = new Point(1052, 71);
+            treeView1.Name = "treeView1";
+            treeView1.Size = new Size(334, 97);
+            treeView1.TabIndex = 6;
+            treeView1.DoubleClick += treeView1_DoubleClick;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1465, 637);
+            Controls.Add(treeView1);
             Controls.Add(button1);
             Controls.Add(dataGridView2);
             Controls.Add(label1);
@@ -207,5 +217,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private Button button1;
+        private TreeView treeView1;
     }
 }

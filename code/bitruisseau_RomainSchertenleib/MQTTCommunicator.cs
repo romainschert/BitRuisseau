@@ -20,7 +20,8 @@ public class MqttCommunicator
 
     private Protocol _protocol;
 
-
+    public event Action<string> OnlineMessageresived;
+    public event Action<string, List<song>> Catalogresived;
     private readonly MqttClientFactory _factory = new();
 
     private bool _retain = false;
@@ -155,11 +156,14 @@ public class MqttCommunicator
         {
             switch (message.Action)
             {
+                case "online":
+                    OnlineMessageresived?.Invoke(message.Sender);
+                    break;
                 case "askCatalog":
                     _protocol.SendCatalog(message.Sender);
                     break;
-                case "sendCatalog": 
-                    _protocol.HandleCatalogResponse(message);
+                case "sendCatalog":
+                    Catalogresived?.Invoke(message.Sender, message.SongList);
                     break;
             }
         }
