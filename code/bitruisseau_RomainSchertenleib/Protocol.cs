@@ -16,14 +16,14 @@ namespace bitruisseau_RomainSchertenleib
 
         // 2. Déclaration de la constante (Pour GlobalRecipient)
         private const string GlobalRecipient = "0.0.0.0";
-        public event Action<List<ISong>> CatalogReceived;
+        public event Action<List<song>> CatalogReceived;
         // 3. Constructeur pour initialiser les champs
         public Protocol(MqttCommunicator communicator, string senderHostname)
         {
             _communicator = communicator;
             _senderHostname = senderHostname;
         }
-        public List<ISong> AskCatalog(string name)
+        public List<song> AskCatalog(string name)
         {
             var message = new ProtocolMessage
             {
@@ -40,11 +40,11 @@ namespace bitruisseau_RomainSchertenleib
 
             // L'implémentation complète devrait attendre la réponse 'sendCatalog' 
             // de la médiathèque 'name'.
-            return new List<ISong>();
+            return new List<song>();
         }
 
 
-        public void AskMedia(ISong song, string name, int startByte, int endByte)
+        public void AskMedia(song song, string name, int startByte, int endByte)
         {
             var message = new ProtocolMessage
             {
@@ -102,13 +102,13 @@ namespace bitruisseau_RomainSchertenleib
             };
             _communicator.Send(message);
         }
-        private List<ISong> GetLocalCatalog()
+        private List<song> GetLocalCatalog()
         {
             string appDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BitRuisseau");
             string SavefileName = "data.txt";
             string SavefilePath = Path.Combine(appDirectory, SavefileName);
            
-            List<ISong> catalog = new List<ISong>();
+            List<song> catalog = new List<song>();
             string folderPath = File.ReadAllText(SavefilePath);
 
             string[] files = Directory.GetFiles(folderPath, "*.mp3");
@@ -174,14 +174,14 @@ namespace bitruisseau_RomainSchertenleib
             _communicator.Send(message);
         }
 
-        private string ReadAndEncodeMediaChunk(ISong song, int startByte, int endByte)
+        private string ReadAndEncodeMediaChunk(song song, int startByte, int endByte)
         {
             // TODO: Lire le fichier local correspondant au hash de la chanson,
             // extraire les bytes de startByte à endByte, et les encoder en Base64.
             // Simuler un morceau de données encodé en Base64
             return $"Base64Data_Hash:{song.Hash}_Start:{startByte}_End:{endByte}";
         }
-        public void SendMedia(ISong song, string name, int startByte, int endByte)
+        public void SendMedia(song song, string name, int startByte, int endByte)
         {
             var songDataChunk = ReadAndEncodeMediaChunk(song, startByte, endByte);
 
@@ -197,14 +197,6 @@ namespace bitruisseau_RomainSchertenleib
                 Hash = song.Hash // Utilise le Hash de l'ISong
             };
             _communicator.Send(message);
-        }
-        public void HandleCatalogResponse(ProtocolMessage message)
-        {
-            if (message.SongList != null)
-            {
-                // Déclenche l'événement en passant le SongList reçu
-                CatalogReceived?.Invoke(message.SongList);
-            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using bitruisseau_RomainSchertenleib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace BitRuisseau
         /// <param name="name">The name/ip of the mediatheque</param>
         /// <returns>A list of songs</returns>
         
-        public List<ISong> AskCatalog(string name);
+        public List<song> AskCatalog(string name);
 
         /// <summary>
         /// Send our catalog to a specific mediatheque
@@ -41,7 +42,7 @@ namespace BitRuisseau
         /// <param name="startByte">The first byte you need</param>
         /// <param name="endByte">The last byte you need</param>
         /// <param name="name">The name/ip of the mediatheque</param>
-        public void AskMedia(ISong song, string name, int startByte, int endByte);
+        public void AskMedia(song song, string name, int startByte, int endByte);
 
         /// <summary>
         /// Send the media to someone
@@ -50,6 +51,6 @@ namespace BitRuisseau
         /// <param name="startByte">The first byte they need</param>
         /// <param name="endByte">The last byte they need</param>
         /// <param name="name">The name/ip of the mediatheque</param>
-        public void SendMedia(ISong song, string name, int startByte, int endByte);
+        public void SendMedia(song song, string name, int startByte, int endByte);
     }
 }

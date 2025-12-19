@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace bitruisseau_RomainSchertenleib
 {
-    internal class song : ISong
+    public class song : ISong
     {
         public string Title { get; set; }
         public string Artist { get; set; }
