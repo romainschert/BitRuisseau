@@ -147,7 +147,7 @@ namespace bitruisseau_RomainSchertenleib
                 {
                     string recipientName = treeView1.SelectedNode.Text;
 
-                    _protocol.AskMedia(selectedSong, recipientName, 0, -1);
+                    _protocol.AskMedia(selectedSong, recipientName, 0, selectedSong.Size);
 
                     MessageBox.Show($"Demande envoyée pour '{selectedSong.Title}' à {recipientName}");
                 }
@@ -207,8 +207,6 @@ namespace bitruisseau_RomainSchertenleib
                 string duration = s.Duration.ToString(@"mm\:ss");
                 string taille = (s.Size / 1024f / 1024f).ToString("0.00") + " Mo";
                 string featuring = s.Featuring != null ? string.Join(", ", s.Featuring) : "";
-
-                dataGridView2.Rows.Add(titre, artiste, annee, duration, taille, featuring);
 
                 int rowIndex = dataGridView2.Rows.Add(titre, artiste, annee, duration, taille, featuring);
                 dataGridView2.Rows[rowIndex].Tag = s;
