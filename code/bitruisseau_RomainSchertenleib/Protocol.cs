@@ -80,11 +80,7 @@ namespace bitruisseau_RomainSchertenleib
             };
             _communicator.Send(message);
 
-            // 2. L'implémentation complète devrait attendre les réponses 'online' 
-            //    via OnMessageReceived du MqttCommunicator.
-            //    Pour l'instant, on retourne un tableau vide et on lève une exception pour signaler 
-            //    que la partie réception n'est pas implémentée.
-            throw new NotImplementedException("La gestion de la réception des messages 'online' et l'attente des réponses ne sont pas implémentées.");
+            return new string[1];
         }
 
         public void SayOnline()

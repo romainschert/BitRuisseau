@@ -40,5 +40,14 @@ const exceptions = [
     "duration": 30,
     "status": "Done",
     "author": "romainschert"
+  },
+  {
+    "patch": true,
+    "name": "absence(): allez au urgence pour faire une radio de ma cheville ",
+    "description": "",
+    "date": "2026-01-09T09:12:00.000Z",
+    "duration": 50,
+    "status": "Done",
+    "author": "romainschert"
   }
 ]
