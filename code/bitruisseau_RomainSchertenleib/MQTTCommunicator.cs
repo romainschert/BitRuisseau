@@ -165,6 +165,8 @@ public class MqttCommunicator
                 case "sendCatalog":
                     Catalogresived?.Invoke(message.Sender, message.SongList);
                     break;
+                case "sendMedia":
+                    break;
             }
         }
     }

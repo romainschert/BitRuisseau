@@ -59,9 +59,6 @@ namespace bitruisseau_RomainSchertenleib
             };
             _communicator.Send(message);
 
-            // L'implémentation complète devrait attendre la réponse 'sendMedia'.
-            // Cela se ferait également via OnMessageReceived.
-            throw new NotImplementedException();
         }
 
         public string[] GetOnlineMediatheque()

@@ -119,8 +119,8 @@ namespace bitruisseau_RomainSchertenleib
 
             foreach (var song in catalog)
             {
-                // Extrait les informations de l'objet ISong (vous pourriez avoir besoin de caster)
-                var songImpl = song as song; // Si vous avez une implémentation concrète 'song'
+                
+                var songImpl = song as song; 
 
                 string titre = song.Title ?? "Inconnu";
                 string artiste = song.Artist ?? "Inconnu";
@@ -129,8 +129,8 @@ namespace bitruisseau_RomainSchertenleib
                 string taille = (song.Size / 1024f / 1024f).ToString("0.00") + " Mo";
                 string featuring = song.Featuring != null ? string.Join(", ", song.Featuring) : "";
 
-                // Assurez-vous que les colonnes de votre DataGridView correspondent à cet ordre
-                dataGridView2.Rows.Add(titre, artiste, annee, duration, taille, featuring);
+                
+                int rowIndex = dataGridView2.Rows.Add(titre, artiste, annee, duration, taille, featuring);
                 dataGridView2.Rows[rowIndex].Tag = song;
             }
         }
@@ -209,6 +209,9 @@ namespace bitruisseau_RomainSchertenleib
                 string featuring = s.Featuring != null ? string.Join(", ", s.Featuring) : "";
 
                 dataGridView2.Rows.Add(titre, artiste, annee, duration, taille, featuring);
+
+                int rowIndex = dataGridView2.Rows.Add(titre, artiste, annee, duration, taille, featuring);
+                dataGridView2.Rows[rowIndex].Tag = s;
             }
         }
 
