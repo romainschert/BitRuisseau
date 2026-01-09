@@ -8,6 +8,7 @@ namespace bitruisseau_RomainSchertenleib
         private string SavefileName = "data.txt";
         private Protocol _protocol;
         private static MqttCommunicator _mqttCommunicator;
+        private static System.Timers.Timer _timer;
         public Form1(MqttCommunicator mqttCommunicator, Protocol protocol)
         {
             InitializeComponent();
@@ -27,6 +28,11 @@ namespace bitruisseau_RomainSchertenleib
             _mqttCommunicator.OnlineMessageresived += OnlineMessageresived;
             _mqttCommunicator.Catalogresived += Mqtt_Catalogresived;
             LoadMp3Files(txtPath.Text);
+
+            _timer = new System.Timers.Timer(20000);
+            _timer.Elapsed += (sender, e) => protocol.GetOnlineMediatheque();
+            _timer.AutoReset = true;
+            _timer.Enabled = true;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -125,14 +131,28 @@ namespace bitruisseau_RomainSchertenleib
 
                 // Assurez-vous que les colonnes de votre DataGridView correspondent à cet ordre
                 dataGridView2.Rows.Add(titre, artiste, annee, duration, taille, featuring);
+                dataGridView2.Rows[rowIndex].Tag = song;
             }
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
 
+                song selectedSong = row.Tag as song;
+
+                if (treeView1.SelectedNode != null && selectedSong != null)
+                {
+                    string recipientName = treeView1.SelectedNode.Text;
+
+                    _protocol.AskMedia(selectedSong, recipientName, 0, -1);
+
+                    MessageBox.Show($"Demande envoyée pour '{selectedSong.Title}' à {recipientName}");
+                }
+            }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             _protocol.SayOnline();
